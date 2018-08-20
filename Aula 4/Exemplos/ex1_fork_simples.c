@@ -6,7 +6,7 @@
 int main(){
 	pid_t pid;
 	pid = fork();
-	if (pid <0){
+        if (pid <0){
 		printf("Erro ao criar processo\n");
 		return 1;
 	}
