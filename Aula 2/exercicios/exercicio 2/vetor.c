@@ -67,6 +67,7 @@ void preencherVetor(int *vetor, int elemento, int tamanho){
         *modificar = elemento;
     }
 }
+
 int main(int argc, char *argv[]){
     int *vetor_b, *vetor_c;
     vetor_b = alocarVetor(atoi(argv[1]));
