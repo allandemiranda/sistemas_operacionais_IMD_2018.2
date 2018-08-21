@@ -2,6 +2,7 @@
 #include <sys/wait.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 int main(){
 	pid_t pid[] = {-1, -1};
