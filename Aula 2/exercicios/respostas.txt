@@ -1,0 +1,13 @@
+Respostas da atividade 1 - pg 11
+
+- Liste as linhas do arquivo capitais onde duas vogais quaisquer aparecem juntas:
+
+grep [aeiou][aeiou] capitais.txt
+
+- No mesmo arquivo, liste os estados ou capitais que começam por vogal:
+
+grep =[AEIOU] capitais.txt | cut -d '=' -f 2,3
+
+- Agora liste apenas as linhas onde os estados começam por vogal:
+
+grep =[AEIOU] capitais.txt | cut -d '=' -f 2,3 | grep =[AERIOU] | cut -d '=' -f 2
