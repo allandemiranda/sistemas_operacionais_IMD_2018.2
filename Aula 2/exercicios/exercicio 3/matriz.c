@@ -47,9 +47,7 @@ int ** alocarMatriz(int tamanhoLinha, int tamanhoColuna){
 void preencherMatriz(int **matriz, int tamanhoLinha, int tamanhoColuna, int elemento){
     for(int i=0; i<tamanhoLinha; ++i){
         for(int j=0; j<tamanhoColuna; ++j){
-            int *linha = (*matriz + i);
-            int *coluna = linha + j;
-            *coluna = elemento;
+            matriz[i][j] = elemento;
         }
     }
 }
@@ -100,13 +98,13 @@ void multiplicarMatrizes(int **matrizUm, int **matrizDois, int tamanho){
 }
 
 int main(int argc, char *argv[]){
-    int *matriz_b, *matriz_c;
-    matriz_b = alocarMatriz(atoi(argv[1]), atoi(argv[1]));
-    matriz_c = alocarMatriz(atoi(argv[1]), atoi(argv[1]));
-    preencherMatriz(matriz_b, atoi(argv[1]), atoi(argv[1]), atoi(argv[2]));
-    preencherMatriz(matriz_c, atoi(argv[1]), atoi(argv[1]), atoi(argv[3]));
-    multiplicarMatrizes(matriz_b, matriz_c, atoi(argv[1]));
-    liberarMatriz(matriz_b, atoi(argv[1]), atoi(argv[1]));
-    liberarMatriz(matriz_c, atoi(argv[1]), atoi(argv[1]));
+    int **matriz_b, **matriz_c; /*< Criar matrizes a ser usadas */
+    matriz_b = alocarMatriz(atoi(argv[1]), atoi(argv[1])); /*< Alocar matriz 'b' */
+    matriz_c = alocarMatriz(atoi(argv[1]), atoi(argv[1])); /*< Alocar matriz 'a' */
+    preencherMatriz(matriz_b, atoi(argv[1]), atoi(argv[1]), atoi(argv[2])); /*< Preencher matriz 'a' com segundo argumento de entrada*/
+    preencherMatriz(matriz_c, atoi(argv[1]), atoi(argv[1]), atoi(argv[3])); /*< Preencher matriz 'b' com terceiro argumento de entrada*/
+    multiplicarMatrizes(matriz_b, matriz_c, atoi(argv[1])); /*< Efetuar operação */
+    liberarMatriz(matriz_b, atoi(argv[1]), atoi(argv[1])); /*< Liberar matriz 'a' */
+    liberarMatriz(matriz_c, atoi(argv[1]), atoi(argv[1])); /*< Liberar matriz 'b' */
     return 0;
 }
