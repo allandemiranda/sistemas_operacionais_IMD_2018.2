@@ -12,6 +12,14 @@ void* produtor(int* buffer){
 	int count=0;//contabiliza as SAFRAS
 	while(count<BUFFER_SAFRA){
 		
+		if(buffer_index<10){
+			*(buffer+buffer_index) = 555;
+			++buffer_index;
+		} else {
+			printf("Produtor vai dormir \n");
+			++count;
+			sleep(4);			
+		}
 		/*aqui é preciso garantir que haja:
 		1) haja escrita somente quando for possível (testar se buffer_index está dentro dos limites)
 		2) se nao for possível, dormir...
@@ -27,6 +35,15 @@ void* consumidor(int* buffer){
 	int tmp; //armazena o que foi lido do buffer para que seja impresso 
 	int count=0; //contabiliza as SAFRAS
 	while(count<BUFFER_SAFRA){
+
+		if(buffer_index>0){
+			printf("Consumidor leu %d \n", *(buffer+buffer_index-1));
+			--buffer_index;
+		} else {
+			printf("Consumidor vai dormir \n");
+			++count;
+			sleep(4);
+		}
 		/*aqui é preciso garantir que:
 		1) haja leitura escrita somente quando for possível (testar se buffer_index está dentro dos limites)
 		2) se nao for possível, dormir...
